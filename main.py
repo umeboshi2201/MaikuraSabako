@@ -1,8 +1,10 @@
 import discord
 import sys
 from tokendata import token
+from character import MaikuraSan
 
 client = discord.Client()
+character = MaikuraSan()
 
 @client.event
 async def on_ready():
@@ -13,16 +15,19 @@ async def on_ready():
 
     if(len(sys.argv) >= 2):
         if(sys.argv[1] == 'start'):
-            #await client.send_message(channel, 'マインクラフトサーバーを起動します')
             if(len(sys.argv) >= 3):
-                #await client.send_message(channel, 'IP : ' + sys.argv[2])
-                pass
+                start_message = character.getStartMessage(sys.argv[2])
+                #await client.send_message(channel, start_message)
+                print(start_message)
         elif(sys.argv[1] == 'end'): 
+            end_message = character.getEndMessage()
             #await client.send_message(channel, 'マインクラフトサーバーを終了します')
-            pass
+            print(end_message)
         else:
             print('error!')
 
+    else:
+        print('error!')
     await client.logout()
 
 if __name__ == "__main__":
