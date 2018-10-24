@@ -26,8 +26,10 @@ async def on_ready():
 
             if(len(sys.argv) >= 3):
                 log_dir_name = 'Logs'
-                new_filename = os.path.join(log_dir_name, 'ServerLog_' + datetime.datetime.today().strftime("%Y%m%d%H%M%S") + '.txt')
-                latest_filename = os.path.join(log_dir_name, 'LatestLog.txt')
+                new_filename = 'ServerLog_' + datetime.datetime.today().strftime("%Y%m%d%H%M%S") + '.txt'
+                latest_filename = 'LatestLog.txt'
+                open_new_filename = os.path.join(log_dir_name, new_filename)
+                open_latest_filename = os.path.join(log_dir_name, latest_filename)
                 os.makedirs(log_dir_name, exist_ok=True)
                 with open(new_filename, 'w') as f, open(latest_filename, 'w') as lf:
                     f.write(sys.argv[2])
