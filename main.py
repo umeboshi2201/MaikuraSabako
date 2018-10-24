@@ -28,10 +28,10 @@ async def on_ready():
                 log_dir_name = 'Logs'
                 new_filename = 'ServerLog_' + datetime.datetime.today().strftime("%Y%m%d%H%M%S") + '.txt'
                 latest_filename = 'LatestLog.txt'
-                open_new_filename = os.path.join(log_dir_name, new_filename)
-                open_latest_filename = os.path.join(log_dir_name, latest_filename)
+                path_new_filename = os.path.join(log_dir_name, new_filename)
+                path_latest_filename = os.path.join(log_dir_name, latest_filename)
                 os.makedirs(log_dir_name, exist_ok=True)
-                with open(open_new_filename, 'w') as f, open(open_latest_filename, 'w') as lf:
+                with open(path_new_filename, 'w') as f, open(path_latest_filename, 'w') as lf:
                     f.write(sys.argv[2])
                     lf.write(sys.argv[2])
                 end_message = end_message + '\n' + character.getLogMessage(sys.argv[2]);
