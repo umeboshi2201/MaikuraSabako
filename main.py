@@ -31,7 +31,7 @@ async def on_ready():
                 open_new_filename = os.path.join(log_dir_name, new_filename)
                 open_latest_filename = os.path.join(log_dir_name, latest_filename)
                 os.makedirs(log_dir_name, exist_ok=True)
-                with open(new_filename, 'w') as f, open(latest_filename, 'w') as lf:
+                with open(open_new_filename, 'w') as f, open(open_latest_filename, 'w') as lf:
                     f.write(sys.argv[2])
                     lf.write(sys.argv[2])
                 end_message = end_message + '\n' + character.getLogMessage(sys.argv[2]);
