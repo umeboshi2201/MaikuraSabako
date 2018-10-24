@@ -25,9 +25,10 @@ async def on_ready():
             end_message = character.getEndMessage()
 
             if(len(sys.argv) >= 3):
-                new_filename = 'ServerLog_' + datetime.datetime.today().strftime("%Y%m%d%H%M%S") + '.txt'
-                latest_filename = 'LatestLog.txt'
-                os.makedirs('Logs', exist_ok=True)
+                log_dir_name = 'Logs'
+                new_filename = os.path.join(log_dir_name, 'ServerLog_' + datetime.datetime.today().strftime("%Y%m%d%H%M%S") + '.txt')
+                latest_filename = os.path.join(log_dir_name, 'LatestLog.txt')
+                os.makedirs(log_dir_name, exist_ok=True)
                 with open(new_filename, 'w') as f, open(latest_filename, 'w') as lf:
                     f.write(sys.argv[2])
                     lf.write(sys.argv[2])
