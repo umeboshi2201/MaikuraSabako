@@ -26,8 +26,7 @@ async def on_ready():
                 with open('ServerLog_' + datetime.datetime.today().strftime("%Y%m%d%H%M%S") + '.txt', 'w') as f, open('LatestLog.txt', 'w') as lf:
                     f.write(sys.argv[2])
                     lf.write(sys.argv[2])
-            
-            end_message = end_message + '\n' + character.getLogMessage(sys.argv[2]);
+                end_message = end_message + '\n' + character.getLogMessage(sys.argv[2]);
 
             await client.send_message(channel, end_message)
 
