@@ -1,6 +1,7 @@
 import discord
 import sys
 import tokendata
+import datetime
 from character import MaikuraSan
 
 client = discord.Client()
@@ -20,7 +21,16 @@ async def on_ready():
                 print(start_message)
         elif(sys.argv[1] == 'end'): 
             end_message = character.getEndMessage()
+            
+            if(len(sys.argv) >= 3):
+                with open('ServerLog_' + datetime.datetime.today().strftime("%Y%m%d%H%M%S") + '.txt', 'w') as f, open('LatestLog.txt', 'w') as lf:
+                    f.write(sys.argv[2])
+                    lf.write(sys.argv[2])
+            
+            end_message = end_message + '\n' + character.getLogMessage(sys.argv[2]);
+
             await client.send_message(channel, end_message)
+
             print(end_message)
         else:
             print('error!')

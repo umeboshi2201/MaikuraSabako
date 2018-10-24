@@ -11,3 +11,6 @@ class MaikuraSan:
         messages = ["サーバーを終了するわ"]
         messages.append("サーバー止めるわね\n面倒だから入ってこないでよ？")
         return messages[random.randrange(len(messages))]
+    def getLogMessage(self, all_log_message):
+        messages = ["ログはこんな感じね"]
+        return messages[random.randrange(len(messages))]
