@@ -36,10 +36,10 @@ async def on_ready():
                 path_send_filename = os.path.join(log_dir_name, send_filename)
                 os.makedirs(log_dir_name, exist_ok=True)
 
-                with open(path_new_filename, 'w') as f:
+                with open(path_new_filename, 'w', encoding='utf-8') as f:
                     f.write(sys.argv[2])
 
-                with open(path_new_filename, 'r', encoding='utf-8') as rf, open(path_send_filename, 'w') as wf:
+                with open(path_new_filename, 'r', encoding='utf-8') as rf, open(path_send_filename, 'w', encoding='utf-8') as wf:
                     server_log_messages = rf.readlines()
                     formatted_server_logs = subroutines.formatLogMessage(server_log_messages)
                     for item in formatted_server_logs:
