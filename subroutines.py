@@ -7,9 +7,9 @@ def formatLogMessage(log_messages):
 
     for name in usernames:
         if len(usernames) != name_make_count:
-            re_pattern_str + re_pattern_str + name + r'|'
+            re_pattern_str = re_pattern_str + name + r'|'
         else:
-            re_pattern_str + re_pattern_str + name
+            re_pattern_str = re_pattern_str + name
         name_make_count = name_make_count + 1
 
     re_pattern_str = re_pattern_str + r')>?[^[]|Starting minecraft server version|Stopping the)'
