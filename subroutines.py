@@ -13,6 +13,7 @@ def formatLogMessage(log_messages):
         name_make_count = name_make_count + 1
 
     re_pattern_str = re_pattern_str + r')>?[^[]|Starting minecraft server version|Stopping the)'
+    match_pattern = re.compile(re_pattern_str)
 
     result_logs = []
     for message in log_messages:

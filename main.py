@@ -47,7 +47,7 @@ async def on_ready():
 
                 log_message = character.getLogMessage(sys.argv[2]);
 
-                await client.send_file(channel, path_new_filename, content=log_message)
+                await client.send_file(channel, path_send_filename, content=log_message)
 
 
             print(end_message)
