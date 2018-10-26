@@ -3,6 +3,7 @@ import sys
 import tokendata
 import datetime
 import os
+import subroutines
 from character import MaikuraSan
 
 client = discord.Client()
@@ -30,13 +31,20 @@ async def on_ready():
 
                 log_dir_name = 'Logs'
                 new_filename = 'ServerLog_' + datetime.datetime.today().strftime("%Y%m%d%H%M%S") + '.txt'
-                send_filename = 'SendLog.txt'
+                send_filename = 'Log_' + datetime.datetime.today().strftime("%Y%m%d%H%M%S") + '.txt'
                 path_new_filename = os.path.join(log_dir_name, new_filename)
                 path_send_filename = os.path.join(log_dir_name, send_filename)
                 os.makedirs(log_dir_name, exist_ok=True)
 
                 with open(path_new_filename, 'w') as f:
                     f.write(sys.argv[2])
+
+                with open(path_new_filename, 'r', encoding='utf-8') as rf, open(path_send_filename, 'w') as wf:
+                    server_log_messages = rf.readlines()
+                    formatted_server_logs = subroutines.formatLogMessage(server_log_messages)
+                    for item in formatted_server_logs:
+                        wf.write(item)
+
                 log_message = character.getLogMessage(sys.argv[2]);
 
                 await client.send_file(channel, path_new_filename, content=log_message)
