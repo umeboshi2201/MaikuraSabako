@@ -17,7 +17,7 @@ def formatLogMessage(log_messages):
     result_logs = []
     for message in log_messages:
         match_result = match_pattern.match(message)
-        if match_result === None:
+        if match_result == None:
             continue
         else:
             result_logs.append(message)
