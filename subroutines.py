@@ -5,8 +5,8 @@ def formatLogMessage(log_messages):
     re_pattern_str = r'^\[([^]]*)\] \[Server thread/INFO\]: (<?(' 
     name_make_count = 1
 
-    for name in usernames:
-        if len(usernames) != name_make_count:
+    for name in usernames.users:
+        if len(usernames.users) != name_make_count:
             re_pattern_str = re_pattern_str + name + r'|'
         else:
             re_pattern_str = re_pattern_str + name
